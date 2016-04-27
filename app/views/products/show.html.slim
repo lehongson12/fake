@@ -1,0 +1,32 @@
+ol.breadcrumb
+  li = link_to t(".all_products"), products_path
+  li.active = @product.name
+
+.page-header
+  h2
+    = @product.name
+    = link_to product_path(@product), class: "btn btn-danger pull-right",
+      data: {confirm: "Are you sure?"}, method: :delete do
+      i.fa.fa-times>
+      | Delete
+
+    = link_to edit_product_path(@product), class: "btn btn-primary pull-right" do
+      i.fa.fa-pencil>
+      | Edit
+
+table.table.table-stripped.table-bordered
+  thead
+    tr
+      td = t(".name")
+      td = t(".description")
+      td = t(".price")
+      td = t(".use_type")
+      td = t(".photo")
+  tbody
+    tr
+      td = @product.name
+      td = @product.description
+      td = @product.price
+      td = @product.use_type
+      td = image_tag @product.photo.url(:medium)
+= link_to "Download product", product_path(@product.id, format: "pdf")

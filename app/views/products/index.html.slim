@@ -1,0 +1,22 @@
+.page-header
+  h2
+    = t(".all_products")
+    = link_to new_product_path, class: "btn btn-primary pull-right" do
+      i.fa.fa-plus>
+      | Add new product
+
+.row
+  .col-sm-12
+    table#products.table.table-striped.table-hover.dataTable.no-footer[
+      role="grid" data-source==products_path(format: "json")
+    ]
+      thead
+        tr
+          th name
+          th description
+          th price
+          th use_type
+          th photo
+      tbody
+
+.row
